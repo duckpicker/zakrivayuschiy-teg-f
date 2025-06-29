@@ -1,0 +1,11 @@
+{
+    "name": "zakrivayuschiy-teg-f",
+    "short_name": "ztf",
+    "icons": [
+        {
+            "src": "./images/favicon.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        }
+    ]
+}

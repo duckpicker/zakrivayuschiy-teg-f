@@ -1,1 +1,31 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+
+:root {
+    --pixel-font: 'PressStart2P', 'Courier New', Courier, monospace;
+    --normal-font: 'Inter', 'Segoe UI', Tahoma, sans-serif;
+    --themes-main-color: #000;
+    --themes-background: #fff;
+    --like-button-width: 130px;
+    --page-background: repeating-linear-gradient(
+            90deg,
+            #d3d3d3 0,
+            #d3d3d3 2px,
+            transparent 2px,
+            transparent 4px
+    ),
+    repeating-linear-gradient(
+            0deg,
+            #d3d3d3 0,
+            #d3d3d3 2px,
+            transparent 2px,
+            transparent 4px
+    ),
+    repeating-linear-gradient(
+            to bottom,
+            #e7e7e7 0%,
+            #e7e7e7 0.01%,
+            #1a1a1a 100%
+    );
+    --contour-color: #000;
+    --animation-fill-color:#ff0000;
+}

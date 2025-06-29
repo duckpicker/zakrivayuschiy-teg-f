@@ -4,15 +4,67 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Закрывающий тег</title>
+    <link rel="icon" href="./images/favicon.svg">
+    <link rel="apple-touch-icon" sizes="256x256" href="./images/favicon.svg">
+    <link rel="mainfest" sizes="256x256" href="./images/favicon.svg">
     <link rel="stylesheet" href="./fonts/fonts.css" />
     <link rel="stylesheet" href="./styles/variables.css" />
     <link rel="stylesheet" href="./styles/globals.css" />
     <link rel="stylesheet" href="./styles/style.css" />
     <link rel="stylesheet" href="./styles/animations.css" />
+    <script src="./scripts/insert-content.js" defer></script>
+    <script src="./scripts/overlay.js" defer></script>
   </head>
   <body class="page">
-    <header class="header"></header>
-    <main></main>
-    <script src="./scripts/like.js"></script>
+  <div class="overlay">
+    <div class="dialog border">
+      <div class="dialog__content">
+        <svg class="dialog-icon">
+          <use href="./images/floppy.svg#tape" xmlns="http://www.w3.org/2000/svg"/>
+        </svg>
+        <p class="dialog__text">Вставьте
+          дискету, чтобы продолжить</p>
+      </div>
+      <button class="dialog__button button">
+        <span class="button__text">ок</span>
+      </button>
+    </div>
+  </div>
+    <header class="header">
+      <div class="header__logo-group border">
+        <h1 class="header__title">&lt;/HTML&gt;</h1>
+        <h2 class="header__subtitle">закрывающий тег</h2>
+      </div>
+    </header>
+    <main>
+      <div class="template-holder"></div>
+      <template id="post-template">
+        <article class="post border">
+          <h3 class="post__title"></h3>
+          <div class="post__image-wrapper border">
+            <img class="post__image" src="" loading="lazy" alt="кот">
+          </div>
+          <div class="post__content">
+            <p class="post__text"></p>
+            <p class="post__footer-text"></p>
+            <div class="buttons">
+              <button class="post__icon-button" type="button"></button>
+              <button class="post__like-button button" type="button" aria-label="Like">
+                <span class="button__text">Like</span>
+              </button>
+            </div>
+          </div>
+        </article>
+      </template>
+      <div class="save">
+        <button class="save__button button">
+          <svg class="save__icon">
+            <use href="./images/floppy.svg#tape" xmlns="http://www.w3.org/2000/svg"/>
+          </svg>
+          <span class="button__text">Сохранить на память</span>
+        </button>
+      </div>
+    </main>
+    <script src="./scripts/like.js" defer></script>
   </body>
 </html>

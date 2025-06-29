@@ -2,15 +2,300 @@
 
 Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
 ✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
+✦ post__like-button — для кнопки Like рядом с иконкой
+✦ post__icon-button — для кнопки, оборачивающей иконку
 ✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
 
+body {
+  background-image: var(--page-background);
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .page {
-  min-inline-size: 320px;
+  min-inline-size: 375px;
   min-block-size: 100dvb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  place-self: center;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.border {
+  border: 2px solid var(--themes-main-color, #000000);
+}
+
+.dialog {
+  width: clamp(
+          341px,
+          calc(341px + (357 - 341) * ((100vw - 375px) / (700 - 375))),
+          357px
+  );
+  padding-inline: clamp(30px, calc(42px - (12 * ((100vw - 375px) / 325))), 42px);
+  padding-block: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--themes-background);
+}
+
+.dialog__button {
+  width: 100%;
+  height: 38px;
+  text-transform: uppercase;
+}
+
+.dialog__content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-block-end: 30px;
+}
+
+.dialog-icon {
+  fill: var(--themes-main-color);
+  width: 39px;
+  height: 39px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.dialog__text {
+  min-width: 198px;
+  font-family: var(--pixel-font);
+  font-size: 14px;
+  line-height: 150%;
+  text-transform: uppercase;
+
+}
+
+.header__logo-group {
+  font-family: var(--pixel-font);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--themes-main-color, #000000);
+  margin: 101px 0;
+  background: var(--themes-background, #FFFFFF);
+  padding: clamp(120px, 16vw, 128px) 0;
+  width: clamp(375px, 30.52vw + 16.03rem, 698px);
+  max-width: 696px;
+}
+
+.header__title {
+  font-size: clamp(3.0625rem, 5vw, 4.0625rem);
+  padding-block-end: 20px;
+}
+
+.header__subtitle {
+  font-size: clamp(0.875rem, 3vw, 1.4375rem);
+  text-transform: uppercase;
+}
+
+.post {
+  width: clamp(375px, 30.52vw + 16.03rem, 698px);
+  box-sizing: border-box;
+  margin-block-end: 52px;
+  background: var(--themes-background, #FFFFFF);
+}
+
+.post__image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  box-sizing: border-box;
+  border: 2px solid var(--themes-main-color, #000000)
+}
+
+.post__image-wrapper {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+}
+
+.post__image-wrapper::after {
+  position: absolute;
+  content: attr(watermark);
+  top: 25px;
+  right: 13px;
+  color: var(--themes-main-color, #000000);
+  text-shadow:
+  -1px -1px 0 var(--themes-background),
+  1px -1px 0 var(--themes-background),
+  -1px 1px 0 var(--themes-background),
+  1px 1px 0 var(--themes-background);
+  font-family: var(--pixel-font);
+  font-size: 14px;
+  pointer-events: none;
+  user-select: none;
+  z-index: 10;
+  opacity: 0.5;
+}
+
+.post__title {
+  font-family: var(--normal-font);
+  font-weight: 700;
+  font-size: 18px;
+  padding: 0 10px;
+}
+
+.post__content {
+  font-family: var(--normal-font);
+  font-weight: 400;
+  font-size: 18px;
+  margin: 25px;
+}
+
+.save {
+  display: flex;
+  justify-content: center;
+  user-select: none;
+}
+
+.save__button {
+  cursor: pointer;
+  padding-block: 15px;
+  padding-inline: 19px 21px;
+  margin-block-end: 100px;
+  margin-block-start: -2px;
+  font-size: 14px;
+  justify-content: center;
+  background: var(--themes-background);
+  border: 2px solid var(--themes-main-color, #000000)
+}
+
+.buttons {
+  position: relative;
+  display: flex;
+  place-content: flex-end;
+}
+
+.post__icon-button {
+  all: initial;
+  position: absolute;
+  right: calc(15px + var(--like-button-width));
+  bottom: -7px;
+  cursor: pointer;
+
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.post__icon-button:focus-visible {
+  border-color: var(--themes-main-color);
+}
+
+.post__like-button {
+  width: var(--like-button-width);
+  height: 38px;
+}
+
+@media (max-width: 697px) {
+  .save__button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .post__title {
+    margin: 0.22rem 0;
+  }
+
+  .save__icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .post__footer-text {
+    margin-block: 1.53125rem;
+  }
+
+  .post__text {
+    padding-block: 2px;
+  }
+}
+
+@media (min-width: 698px) {
+  .save__button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .post__title {
+    margin: 0.19rem 0;
+  }
+
+  .save__button {
+    margin-block-end: 105px;
+  }
+
+  .save__icon {
+    width: 21px;
+    height: 21px;
+  }
+
+  .post__footer-text {
+    margin-block: 25px;
+  }
+
+  .post__text {
+    padding-block: 3px;
+  }
+}
+
+.filtered-img-0 {
+  filter: sepia(70%);
+}
+
+.filtered-img-1 {
+  filter: invert(100%);
+}
+
+.filtered-img-2 {
+  filter: hue-rotate(90deg);
+}
+
+.filtered-img-3 {
+  filter: grayscale(100%);
+}
+
+.filtered-img-4 {
+  filter: blur(5px);
+}
+
+.filtered-img-5 {
+  filter: contrast(150%);
+}
+
+.filtered-img-6 {
+  filter: brightness(1.5);
+}
+
+.filtered-img-7 {
+  filter: sepia(80%) contrast(120%) brightness(1.1);
 }
