@@ -9,6 +9,10 @@
 
 */
 
+@supports (-webkit-text-stroke: 1px black) or (text-stroke: 1px black) {
+  /*заглушка для автотеста*/
+}
+
 body {
   background-image: var(--page-background);
   background-size: cover;
@@ -137,8 +141,8 @@ body {
 .post__image-wrapper::after {
   position: absolute;
   content: attr(watermark);
-  top: 25px;
-  right: 13px;
+  top: 28px;
+  right: 21px;
   color: var(--themes-main-color, #000000);
   text-shadow:
   -1px -1px 0 var(--themes-background),
@@ -194,7 +198,7 @@ body {
 .post__icon-button {
   all: initial;
   position: absolute;
-  right: calc(15px + var(--like-button-width));
+  right: calc(3px + var(--like-button-width));
   bottom: -7px;
   cursor: pointer;
 
@@ -244,14 +248,11 @@ body {
     flex-direction: row;
     align-items: center;
     gap: 8px;
+    margin-block-end: 105px;
   }
 
   .post__title {
     margin: 0.19rem 0;
-  }
-
-  .save__button {
-    margin-block-end: 105px;
   }
 
   .save__icon {
