@@ -145,7 +145,7 @@ dialog.overlay::backdrop {
 .post__watermark {
     position: absolute;
     content: "";
-    inset: 25px clamp(13px, 4vw, 25px) auto auto;
+    inset: 24px clamp(11px, calc((100vw - 375px) * (12 / 325) + 11px), 25px) auto auto;
     color: var(--themes-main-color, #000000);
     font-family: var(--pixel-font), monospace;
     font-size: 14px;

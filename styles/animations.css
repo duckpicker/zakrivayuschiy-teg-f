@@ -13,7 +13,7 @@
 .button {
     cursor: pointer;
     user-select: none;
-    font-family: var(--pixel-font);
+    font-family: var(--pixel-font), monospace;
     font-size: 14px;
     background: var(--themes-background);
     position: relative;
