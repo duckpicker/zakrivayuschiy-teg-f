@@ -70,7 +70,16 @@ const data = [
 
 const template = document.getElementById("post-template");
 const root = document.querySelector(".template-holder");
-const includes = [...Array(8).keys()];
+const includes = [
+    "filter-gold-rain",
+    "filter-twitch-friendly",
+    "filter-schizo-vision",
+    "filter-one-thousand-minus-seven",
+    "filter-pov-my-vision",
+    "filter-unreal-skin-shader",
+    "filter-working-overnight",
+    "filter-old-school-cramp"
+];
 for (let i = includes.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [includes[i], includes[j]] = [includes[j], includes[i]];
@@ -83,11 +92,13 @@ data.slice().reverse().forEach((post, i) => {
     const a = b => postElement.querySelector(`.${b}`);
 
     a("post__title").innerHTML = post.title;
-    a("post__image-wrapper").setAttribute("watermark", post.watermark);
+    a("post__watermark").textContent = post.watermark;
     a("post__image").src = post.imageSrc;
-    a("post__image").classList.add(`filtered-img-${includes[i]}`);
+    a("post__image").classList.add(includes[i]);
+    const textElement = a("post__text").cloneNode(true);
     a("post__text").innerHTML = post.text;
-    a("post__footer-text").innerHTML = post.footerText;
+    textElement.innerHTML = post.footerText;
+    a("post__text").after(textElement);
     a("post__icon-button").innerHTML = like;
 
     root.after(clone);

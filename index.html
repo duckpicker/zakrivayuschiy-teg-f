@@ -1,70 +1,68 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Закрывающий тег</title>
     <link rel="icon" href="svg/favicon.svg">
-    <link rel="apple-touch-icon" sizes="256x256" href="svg/favicon.svg">
+    <link rel="apple-touch-icon" sizes="256x256" href="images/favicon.png">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="./fonts/fonts.css" />
-    <link rel="stylesheet" href="./styles/globals.css" />
-    <link rel="stylesheet" href="./styles/variables.css" />
-    <link rel="stylesheet" href="./styles/style.css" />
-    <link rel="stylesheet" href="./styles/animations.css" />
+    <link rel="stylesheet" href="./fonts/fonts.css"/>
+    <link rel="stylesheet" href="./styles/globals.css"/>
+    <link rel="stylesheet" href="./styles/variables.css"/>
+    <link rel="stylesheet" href="./styles/style.css"/>
+    <link rel="stylesheet" href="./styles/animations.css"/>
     <script src="./scripts/insert-content.js" defer></script>
-    <script src="./scripts/overlay.js" defer></script>
-  </head>
-  <body class="page">
-  <dialog class="overlay">
-    <div class="dialog border">
-      <div class="dialog__content">
-        <svg class="dialog-icon">
-          <use href="./svg/floppy.svg#tape" xmlns="http://www.w3.org/2000/svg"/>
-        </svg>
-        <p class="dialog__text">Вставьте
-          дискету, чтобы продолжить</p>
-      </div>
-      <button class="dialog__button button">
-        <span class="button__text">ок</span>
-      </button>
+</head>
+<body class="page">
+<dialog class="overlay dialog" id="overlay-dialog" aria-controls="overlay-dialog">
+    <div class="dialog__box border">
+        <div class="dialog__content">
+            <svg class="dialog-icon">
+                <use href="./svg/floppy.svg#tape" xmlns="http://www.w3.org/2000/svg"/>
+            </svg>
+            <p class="dialog__text">Вставьте дискету, чтобы продолжить</p>
+        </div>
+        <button class="dialog__button button" type="button" onclick="document.getElementById('overlay-dialog').close()">
+            <span class="button__text">ок</span>
+        </button>
     </div>
-  </dialog>
-    <header class="header">
-      <div class="header__logo-group border">
+</dialog>
+<header class="header">
+    <div class="header__logo-group border">
         <h1 class="header__title">&lt;/HTML&gt;</h1>
         <h2 class="header__subtitle">закрывающий тег</h2>
-      </div>
-    </header>
-    <main>
-      <div class="template-holder"></div>
-      <template id="post-template">
+    </div>
+</header>
+<main>
+    <div class="template-holder"></div>
+    <template id="post-template">
         <article class="post border">
-          <h3 class="post__title"></h3>
-          <div class="post__image-wrapper border">
-            <img class="post__image" src="" loading="lazy" alt="кот">
-          </div>
-          <div class="post__content">
-            <p class="post__text"></p>
-            <p class="post__footer-text"></p>
-            <div class="buttons">
-              <button class="post__icon-button" type="button"></button>
-              <button class="post__like-button button" type="button" aria-label="Like">
-                <span class="button__text">Like</span>
-              </button>
+            <h3 class="post__title"></h3>
+            <div class="post__image-wrapper border">
+                <img class="post__image" src="" loading="lazy" alt="кот">
+                <div class="post__watermark"></div>
             </div>
-          </div>
+            <div class="post__content">
+                <p class="post__text"></p>
+                <div class="buttons">
+                    <button class="post__icon-button" type="button"></button>
+                    <button class="post__like-button button border" type="button" aria-label="Like">
+                        <span class="button__text">Like</span>
+                    </button>
+                </div>
+            </div>
         </article>
-      </template>
-      <div class="save">
-        <button class="save__button button">
-          <svg class="save__icon">
-            <use href="./svg/floppy.svg#tape" xmlns="http://www.w3.org/2000/svg"/>
-          </svg>
-          <span class="button__text">Сохранить на память</span>
+    </template>
+    <div class="save">
+        <button class="save__button button" type="button" onclick="document.getElementById('overlay-dialog').showModal()" aria-controls="overlay-dialog">
+            <svg class="save__icon">
+                <use href="./svg/floppy.svg#tape" xmlns="http://www.w3.org/2000/svg"/>
+            </svg>
+            <span class="button__text">Сохранить на память</span>
         </button>
-      </div>
-    </main>
-    <script src="./scripts/like.js" defer></script>
-  </body>
+    </div>
+</main>
+<script src="./scripts/like.js" defer></script>
+</body>
 </html>
